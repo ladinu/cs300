@@ -1,0 +1,44 @@
+Links:
+	1: http://www.gnu.org/software/coreutils/faq/coreutils-faq.html
+	2: https://savannah.gnu.org/git/?group=coreutils
+
+Copyright © 2013 Ladinu Chandrasinghe
+Revision 0 (2013-10-11)
+
+Coreutils "Seq"
+
+CS 300 Homework 1
+
+0. Notes on findings and progress
+	* Visited "GNU Core Utilities Frequently Asked Questions" page section "Where can I get the latest version of GNU coreutils?".
+
+	* Downloaded Ubuntu 12.04 and created a virtual machine using VirtualBox. Installed `git-core` on the Ubuntu machine and cloned the repository `git://git.savannah.gnu.org/coreutils` which was mentioned in "Where can I get the latest version of GNU coreutils"
+
+	* Read the "README-hacking" text file in `coreutils` repo and followed its directions. Ran into the follwoing issue: Ran `./bootstrap` and gave me error about not finding autoconf. Read the "README-prereq" and installed the missing dependencies.
+
+	* After installing the dependencies was able to run `./bootstrap` fine without any errors. 
+
+	* Ran the fowllowing commands:
+		```sh $ git submodule foreach git pull origin master``
+		```sh $ git commit -m 'build: update gnulib submodule to latest' gnulib```
+
+	* Some warnings were shown after running the following command:
+		```sh ./configure --quiet```
+	
+	* The abouve warnings were resolved by installing the libraries that it complained about. Then ran ```sh $ make``` and gave the following errror: `error: token @ is not valid in preprocessor expressions`.
+
+	* After googling the error, came up with no answers. Decided to restart the whole proccess from the begening and this time everything worked. I was able to run `make` and `make check` without any major problems.
+
+	* There were executable coreutil files in `src/` such as `ls`, `rmdir`, `touch` etc.
+
+1. 
+	- Try building the source. Does it work for you?
+		* I was able to build all of coreutils which include `seq`
+
+	- Who is the author of GNU `seq`?
+		* When the built `seq` was executed with `--version` flag. It says the follwoing at the end "Written by Ulrich Drepper.". Also in the `seq.c` file it says "Written by Ulrich Drepper" in the comments.
+
+	- What license is it under?
+		* License GPLv3+: GNU GPL version 3 or later
+
+	

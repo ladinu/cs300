@@ -1,0 +1,22 @@
+Copyright © 2013 Bart Massey 
+Revision 0 (2013-07-10)
+
+Coreutils "seq"
+
+CS 300 Homework 1
+
+In this homework you will examine and report on the GNU Coreutils implementation of the seq command.
+
+Start a text file of notes on what you're about to do. As you work on this assignment, make notes about your findings and progress. You will turn in your notes at the end.
+
+Go find the primary source code to GNU Coreutils 8.21. Figure out how to unpack it, and take a look at it. Find the source code to the seq command. Try building the source. Does it work for you? Who is the author of GNU seq? What license is it under?
+
+The seq source is written in C. What version of C is it? Is it C++ compatible? Has a coding standard been followed? If so, what standard? Comment on the general readability of the C source code.
+
+The implementation links against both system libraries and a special GNU Coreutils library. What purposes does the Coreutils library serve (that is, why aren't the system libraries sufficient)?
+
+There are not one, but two implementations of the core loop in the source: one in the function seq_fast and the other in the function print_numbers. How does the program decide whether seq_fast is applicable? Why is seq_fast supposed to be faster? Can you think of a way to check how much speedup seq_fast actually gives?
+
+How might you improve upon this implementation?
+
+Please turn in a writeup answering the questions above, as well as your notes on your process, via the Moodle. You may submit submit textfiles, or, if you must, PDF. Please do not submit files from proprietary applications (such as Word's .doc or OpenOffice's .odw): they will be ignored during grading.
