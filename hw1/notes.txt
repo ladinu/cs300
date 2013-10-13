@@ -9,7 +9,7 @@ Coreutils "Seq"
 
 CS 300 Homework 1
 
-0. Notes on findings and progress
+1. Notes on findings and progress
 	* Visited "GNU Core Utilities Frequently Asked Questions" page section "Where can I get the latest version of GNU coreutils?".
 
 	* Downloaded Ubuntu 12.04 and created a virtual machine using VirtualBox. Installed `git-core` on the Ubuntu machine and cloned the repository `git://git.savannah.gnu.org/coreutils` which was mentioned in "Where can I get the latest version of GNU coreutils"
@@ -31,7 +31,7 @@ CS 300 Homework 1
 
 	* There were executable coreutil files in `src/` such as `ls`, `rmdir`, `touch` etc.
 
-1. 
+2. 
 	- Try building the source. Does it work for you?
 		* I was able to build all of coreutils which include `seq`
 
@@ -41,4 +41,35 @@ CS 300 Homework 1
 	- What license is it under?
 		* License GPLv3+: GNU GPL version 3 or later
 
+3. 
+	- What version of C is it? 
+		* In the `config.status` file it has the following line: `$["CC"]="gcc -std=gnu99". So I'm guessing the C version is gnu99.
+
+	- Is it C++ compatible? 
+		* I dont know. In the `config.status` it had a line like the following: `$["CPP"]="gcc -std=gnu99 -E"`. So it may be compatible.
+
+	- Has a coding standard been followed? If so, what standard?
+		* GNU Coding Standards has been followed.
+
+	- Comment on the general readability of the C source code.
+		* I was able to read few function and understand most of it. In most of the places there were some really good comments.
 	
+
+4. What purposes does the Coreutils library serve?
+	* From what I read in the gnulib manual, gnulib extend and in some cases implement certain system functions to increase portability.
+
+5. 
+	- How does the program decide whether `seq_fast` is applicable?
+		1. If there is no format string
+		2. If there is a start and end integer
+		3. If the increment is 1 or not specified
+			
+	- Why is seq_fast supposed to be faster?
+		* The comments says that it buffers the integers. Rather than call `fwrite` for each number, it computes the numbers first and store it in a buffer. Then this buffer is written using less `fwrite` calls.
+
+	- Can you think of a way to check how much speedup seq_fast actually gives?
+		* Time the execution times of the `seq` command. First run the command with `--format` option. The run `seq` without the format option. For example:
+			1. ```sh $ time seq --format "aa%0g" 1e5```
+			2. ```sh $ time seq --format 1e5```
+
+6. How might you improve upon this implementation?
