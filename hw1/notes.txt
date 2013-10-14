@@ -73,3 +73,4 @@ CS 300 Homework 1
 			2. ```sh $ time seq --format 1e5```
 
 6. How might you improve upon this implementation?
+	* Try to make `print_numbers` buffer the output like `seq_fast`. Also, perhaps you could have two or more threads compute the output in parallel and write to stdout in chunks.
